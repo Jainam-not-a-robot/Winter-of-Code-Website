@@ -2,7 +2,7 @@ import * as React from "react";
 import { useState } from "react";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 import { useNavigate } from "react-router-dom";
-import { Avatar, Box, Typography, Button, Menu, MenuItem, Modal, Snackbar, IconButton } from "@mui/material";
+import { Avatar , Button, Menu, MenuItem, Snackbar, IconButton } from "@mui/material";
 import { RxHamburgerMenu } from "react-icons/rx";
 import CloseIcon from "@mui/icons-material/Close";
 import axios from "axios";
@@ -10,20 +10,8 @@ import { userstate } from "../store/userState";
 import { togglestate } from "../store/toggle";
 import Sidebar from "./SideBar";
 import { mentorrequest } from "../types/mentor";
-
-
-
-const modalStyle = {
-  position: "absolute",
-  top: "50%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
-  width: 400,
-  bgcolor: "background.paper",
-  border: "2px solid #000",
-  boxShadow: 24,
-  p: 4,
-};
+import { MentorRequestsModal,DriveModal } from "./Modals";
+const BASE_URL = import.meta.env.VITE_REACT_APP_BASE_URL;
 
 const SnackbarAction = ({ onClose }: { onClose: () => void }) => (
   <React.Fragment>
@@ -36,28 +24,9 @@ const SnackbarAction = ({ onClose }: { onClose: () => void }) => (
   </React.Fragment>
 );
 
-const MentorRequestsModal = ({ open, onClose, mentors, onAccept }: { open: boolean, onClose: () => void, mentors: mentorrequest[], onAccept: (id: string) => void }) => (
-  <Modal open={open} onClose={onClose} aria-labelledby="modal-title" aria-describedby="modal-description">
-    <Box sx={modalStyle}>
-      <Typography id="modal-title" variant="h6" component="h2">
-        Requests to be Mentors
-      </Typography>
-      <div>
-        {mentors && mentors.length > 0 && mentors.map((mentor) => (
-          <div key={mentor.id} className="flex justify-between">
-            <div>{mentor.name}</div>
-            <Button variant="contained" onClick={() => onAccept(mentor.id)}>
-              Accept Request
-            </Button>
-          </div>
-        ))}
-      </div>
-    </Box>
-  </Modal>
-);
-
 const Navbar: React.FC = () => {
   const [isMentorRequestOpen, setMentorRequestOpen] = useState(false);
+  const [isDriveRequestOpen, setDriveRequestOpen] = useState(false);
   const [isSuccessSnackbarOpen, setSuccessSnackbarOpen] = useState(false);
   const [isMentorRequestSnackbarOpen, setMentorRequestSnackbarOpen] = useState(false);
   const [mentors, setMentors] = useState<mentorrequest[]>([]);
@@ -66,7 +35,7 @@ const Navbar: React.FC = () => {
   const user = useRecoilValue(userstate);
   const setToggle = useSetRecoilState<boolean | null>(togglestate);
   const navigate = useNavigate();
-  const BASE_URL = import.meta.env.VITE_REACT_APP_BASE_URL;
+
   const fetchMentorRequests = async () => {
     const token = localStorage.getItem("jwt_token")
     try {
@@ -101,8 +70,6 @@ const Navbar: React.FC = () => {
       console.error("Error accepting mentor request:", error);
     }
   };
-  
-
   const handleMentorRequest = async () => {
     if (user) {
         try {
@@ -184,13 +151,22 @@ const Navbar: React.FC = () => {
                 {user.role === "scrummaster" && (
                   <MenuItem onClick={() => { fetchMentorRequests(); setMentorRequestOpen(true); }}>Requests</MenuItem>
                 )}
+                {user.role === "2" && (
+                  <MenuItem onClick={() => {  setDriveRequestOpen(true); }}>Add Progress</MenuItem>
+                )}
+                
                 <MenuItem onClick={() => { setAnchorEl(null); 
                   localStorage.removeItem("access_token"); 
                   localStorage.removeItem("refresh_token");
                   localStorage.removeItem("jwt_token");
-                  navigate("/login"); }}>Logout</MenuItem>
+                  navigate("/login"); 
+                  }}>Logout
+                  </MenuItem>
               </Menu>
-
+              <DriveModal
+              open={isDriveRequestOpen}
+              onClose={() => setDriveRequestOpen(false)}
+              />
               <MentorRequestsModal
                 open={isMentorRequestOpen}
                 onClose={() => setMentorRequestOpen(false)}
