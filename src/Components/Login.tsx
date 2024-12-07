@@ -1,9 +1,9 @@
 import { useRecoilValue, useRecoilState} from "recoil";
 import { togglestate } from "../store/toggle";
 import { useGoogleLogin } from "@react-oauth/google";
-import { Button } from "@mui/material";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import GoogleButton from 'react-google-button'
 import { userstate } from "../store/userState";
 const Login = () => {
   const navigate = useNavigate();
@@ -38,13 +38,12 @@ const Login = () => {
 
   return (
     <div
-      className={` w-screen h-screen mt-[130px]  flex justify-center  overflow-x-hidden ${toggle === null ? "" : toggle ? "contract" : "expand"}`}
+      className={` w-screen h-screen mt-[160px]  flex justify-center  overflow-x-hidden ${toggle === null ? "" : toggle ? "contract" : "expand"}`}
     >
-      <div className="w-[300px] h-[300px] py-20 shadow-custom flex justify-center ">
-        <Button onClick={login} className=" h-[60px]" variant="contained">
-          SignIn with Google
-        </Button>
-      </div>
+      <div className="w-[300px] h-[00px] py-20 shadow-custom flex justify-center items-center ">
+      
+        <GoogleButton onClick={login} />
+        </div>
     </div>
   );
 };
