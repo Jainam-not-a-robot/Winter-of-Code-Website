@@ -5,7 +5,7 @@ import axios from "axios";
 import { togglestate } from "../store/toggle";
 import { useNavigate } from "react-router-dom";
 import { Proposal } from "../types/proposal";
-import { CustomizedTables } from "./Tables";
+import { AdminTable, CustomizedTables } from "./Tables";
 
 
 const ProposalPage = () => {
@@ -36,23 +36,41 @@ const ProposalPage = () => {
   useEffect(() => {
     const getProposals = async () => {
       if (user) {
-        if (user.role !== "2") {
+        if (user.role == "1") {
           navigate("/");
           return;
         }
-        const token = localStorage.getItem("jwt_token");
-        try {
-          const resp = await axios.get(
-            `${BASE_URL}/proposals/${user.id}`,
-            {
-              headers: {
-                Authorization: `Bearer ${token}`, 
-              },
-            }
-          );
-          setProposals(resp.data);
-        } catch (error) {
-          console.error("Error fetching proposals:", error);
+        if (user.role == "2") {
+          const token = localStorage.getItem("jwt_token");
+          try {
+            const resp = await axios.get(
+              `${BASE_URL}/proposals/${user.id}`,
+              {
+                headers: {
+                  Authorization: `Bearer ${token}`,
+                },
+              }
+            );
+            setProposals(resp.data);
+          } catch (error) {
+            console.error("Error fetching proposals:", error);
+          }
+        }
+        if (user.role == "scrummaster") {
+          const token = localStorage.getItem("jwt_token");
+          try {
+            const resp = await axios.get(
+              `${BASE_URL}/allproposals`,
+              {
+                headers: {
+                  Authorization: `Bearer ${token}`,
+                },
+              }
+            );
+            setProposals(resp.data);
+          } catch (error) {
+            console.error("Error fetching proposals:", error);
+          }
         }
       }
     };
@@ -79,7 +97,13 @@ const ProposalPage = () => {
               talented students.
             </div>
             <div className="m-5">
-            <CustomizedTables proposals={proposals} updateproposal={updateproposal} />
+              {
+                user?.role == "2" ?
+              
+                  <CustomizedTables proposals={proposals} updateproposal={updateproposal} />
+                  :
+                  <AdminTable proposals={proposals} />
+              }
             </div>
           </div>
         </div>

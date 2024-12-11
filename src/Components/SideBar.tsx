@@ -90,7 +90,7 @@ const Sidebar: React.FC<{ onClose: () => void }> = () => {
             </Link>
           ) : (
             user &&
-            user.role == "2" && (
+            (user.role == "2" || user.role =="scrummaster") && (
               <Link to={"/proposals"}>
                 <div onClick={()=>settoggle(!toggle)}  className="py-2 px-4 text-primary-dark border-l-4 hover:bg-slate-100 border-primary-dark flex align-middle gap-2">
                   <i className="fa fa-tachometer mr-2">

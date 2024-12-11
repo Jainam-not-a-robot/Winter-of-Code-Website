@@ -4,5 +4,6 @@ export interface Proposal {
     name: string;
     mentorid: string;
     title: string;
-    status:boolean;
+    status: boolean;
+    email: string;
   }
