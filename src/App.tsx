@@ -18,6 +18,7 @@ import Loading from "./Components/Loading.tsx";
 import { Suspense } from "react";
 import Navbar from "./Components/Navbar.tsx";
 import NotFound from "./Components/NotFound.tsx";
+import Profileview from "./Components/Profileview.tsx";
 
 const App = () => {
   const user = useRecoilValueLoadable(userstate);
@@ -48,6 +49,7 @@ const App = () => {
             <Route path="/admin" element={<AdminPortal />} />
             <Route path="/addproject" element={<ProjectForm />} />
             <Route path="*" element={<NotFound />} />
+            <Route path="/profileview" element={<Profileview />} />
 
           </Routes>
         </Suspense>

@@ -144,7 +144,7 @@ const Navbar: React.FC = () => {
                   horizontal: "left",
                 }}
               >
-                <MenuItem onClick={() => { setAnchorEl(null); navigate("/profile"); }}>Profile</MenuItem>
+                <MenuItem onClick={() => { setAnchorEl(null); navigate("/profileview"); }}>Profile</MenuItem>
                 {user.role === "1" && (
                   <MenuItem onClick={handleMentorRequest}>Mentor Request</MenuItem>
                 )}
