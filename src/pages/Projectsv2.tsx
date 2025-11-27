@@ -8,6 +8,7 @@ import { wocstate } from "../store/woc";
 import { resultstate } from "../store/results";
 import project from "../types/project";
 import { togglestate } from "@/store/toggle";
+import { Link } from "react-router-dom";
 
 const SpotlightCard = ({ project, onApply, onDelete, user, results }) => {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -54,6 +55,7 @@ const SpotlightCard = ({ project, onApply, onDelete, user, results }) => {
       layout
       className="relative rounded-2xl bg-gray-800/80 backdrop-blur-sm border border-gray-700/50 shadow-lg overflow-hidden"
     >
+      <Link to={`/projects/${project.id}`} className=" block" >
       <motion.div
         className="pointer-events-none absolute -inset-px rounded-xl opacity-0 transition duration-300"
         style={{
@@ -111,7 +113,7 @@ const SpotlightCard = ({ project, onApply, onDelete, user, results }) => {
           )}
         </motion.div>
       </motion.div>
-
+          </Link>
       <div className="bg-gray-800/50 px-6 py-3 flex justify-between items-center">
         <button
           onClick={() => setIsExpanded(!isExpanded)}
@@ -143,6 +145,7 @@ const SpotlightCard = ({ project, onApply, onDelete, user, results }) => {
           </div>
         )}
       </div>
+
     </motion.div>
   );
 };

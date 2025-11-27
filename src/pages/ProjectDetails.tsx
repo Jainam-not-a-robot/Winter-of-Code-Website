@@ -11,8 +11,10 @@ const ProjectDetails = () => {
   useEffect(() => {
     const getProject = async () => {
       try {
-        const response = await axios.get(`${BASE_URL}/projects/${id}`);
-        setProject(response.data);
+        const response = await axios.get(`${BASE_URL}/projects`);
+        const allProjects = response.data;
+        const selectedProject = allProjects.find((p: project) => p.id === id);
+        setProject(selectedProject);
       } catch (error) {
         console.error('Error fetching project details:', error);
       }
