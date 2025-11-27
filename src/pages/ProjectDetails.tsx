@@ -139,17 +139,25 @@ const ProjectDetails = () => {
             <div className="glass rounded-2xl p-6">
               <h3 className="text-sm font-medium text-white mb-4">Mentors</h3>
               <div className="space-y-3">
-                {project.mentor?.split(',').map((m: string, idx: number) => (
-                  <div
-                    key={idx}
-                    className="flex items-center gap-3 p-2 rounded-lg hover:bg-white/5 transition-colors"
-                  >
-                    <div className="w-10 h-10 rounded-full bg-gradient-to-tr from-arctic-steel to-cold-slate border border-white/10 flex items-center justify-center text-sm font-medium text-white">
-                      {m.trim().split(' ').map((n: string) => n[0]).join('')}
+                {(() => {
+                  const mentors = Array.isArray(project.mentor)
+                    ? project.mentor
+                    : typeof project.mentor === 'string'
+                    ? project.mentor.split(',')
+                    : [];
+
+                  return mentors.map((m: string, idx: number) => (
+                    <div
+                      key={idx}
+                      className="flex items-center gap-3 p-2 rounded-lg hover:bg-white/5 transition-colors"
+                    >
+                      <div className="w-10 h-10 rounded-full bg-gradient-to-tr from-arctic-steel to-cold-slate border border-white/10 flex items-center justify-center text-sm font-medium text-white">
+                        {m.trim().split(' ').map((n: string) => n[0]).join('')}
+                      </div>
+                      <span className="text-sm text-frost-white">{m.trim()}</span>
                     </div>
-                    <span className="text-sm text-frost-white">{m.trim()}</span>
-                  </div>
-                ))}
+                  ));
+                })()}
               </div>
             </div>
 

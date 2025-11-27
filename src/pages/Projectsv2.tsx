@@ -198,9 +198,14 @@ const ProjectModal = ({
                           Mentors
                         </h3>
                         <div className="space-y-3">
-                          {project.mentor
-                            ?.split(",")
-                            .map((m: string, idx: number) => (
+                          {(() => {
+                            const mentors = Array.isArray(project.mentor)
+                              ? project.mentor
+                              : typeof project.mentor === 'string'
+                              ? project.mentor.split(",")
+                              : [];
+
+                            return mentors.map((m: string, idx: number) => (
                               <div
                                 key={idx}
                                 className="flex items-center gap-3 p-2 rounded-lg hover:bg-white/5 transition-colors"
@@ -216,7 +221,8 @@ const ProjectModal = ({
                                   {m.trim()}
                                 </span>
                               </div>
-                            ))}
+                            ));
+                          })()}
                         </div>
                       </div>
 
