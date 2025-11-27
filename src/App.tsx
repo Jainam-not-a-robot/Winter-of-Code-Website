@@ -19,7 +19,7 @@ import { Suspense } from "react";
 import Navbar from "./Components/Navbar.tsx";
 import NotFound from "./Components/NotFound.tsx";
 import Profileview from "./Components/Profileview.tsx";
-
+import Projectsv2 from "./pages/Projectsv2.tsx";
 const App = () => {
   const user = useRecoilValueLoadable(userstate);
 
@@ -41,7 +41,7 @@ const App = () => {
             <Route path="/pastprogram" element={<Programs />} />
             <Route path="/" element={<Home />} />
             <Route path="/mentors" element={<Mentors />} />
-            <Route path="/projects" element={<Projects />} />
+            <Route path="/projects" element={<Projectsv2 />} />
             <Route path="/help" element={<Help />} />
             <Route path="/ideas" element={<Idea />} />
             <Route path="/how-it-works" element={<Timeline />} />
