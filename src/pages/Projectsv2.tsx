@@ -327,6 +327,7 @@ const Projectsv2 = () => {
   const [snackbar, setSnackbar] = useState({ show: false, message: "" });
 
   useEffect(() => {
+    console.log(BASE_URL)
     const getProjects = async () => {
       try {
         const response = await axios.get(`${BASE_URL}/projects`);
