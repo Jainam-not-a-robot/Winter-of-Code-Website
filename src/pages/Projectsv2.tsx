@@ -25,26 +25,29 @@ const ProjectCard = ({ project, onOpenModal }: ProjectCardProps) => {
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      className="group cursor-pointer glass rounded-xl p-6 hover:border-ice-surge/30 transition-all duration-300 hover:shadow-[0_0_30px_-10px_rgba(0,198,255,0.15)] relative overflow-hidden"
+      exit={{ opacity: 0, y: 20 }}
+      className="group cursor-pointer glass rounded-2xl p-8 hover:border-ice-surge/30 transition-all duration-300 hover:shadow-[0_0_40px_-10px_rgba(0,198,255,0.2)] relative overflow-hidden"
       onClick={() => onOpenModal(project)}
     >
       <div className="absolute top-0 right-0 p-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
         <HiOutlineArrowUpRight className="w-5 h-5 text-ice-surge" />
       </div>
       <div className="flex items-start justify-between mb-4">
-        <div className="w-10 h-10 rounded-lg bg-white/5 border border-white/5 flex items-center justify-center text-cloud-gray group-hover:text-white group-hover:bg-ice-surge/10 transition-colors">
-          <TbLayersIntersect className="w-5 h-5" />
+        <div className="w-12 h-12 rounded-xl bg-white/5 border border-white/5 flex items-center justify-center text-cloud-gray group-hover:text-white group-hover:bg-ice-surge/10 transition-colors">
+          <TbLayersIntersect className="w-6 h-6" />
         </div>
         <span className="text-[10px] font-medium px-2 py-1 rounded-md border border-white/5 bg-white/5 text-cloud-gray">
           {project.tag || "Open"}
         </span>
       </div>
-      <h3 className="text-lg font-semibold text-frost-white mb-2 group-hover:text-ice-surge transition-colors tracking-tight">
+      <h3 className="text-2xl font-semibold text-frost-white mb-3 group-hover:text-ice-surge transition-colors tracking-tight">
         {project.title}
       </h3>
-      <p className="text-sm text-cloud-gray line-clamp-2 mb-6 group-hover:text-slate-400 transition-colors">
+
+      <p className="text-base text-cloud-gray line-clamp-3 mb-6 group-hover:text-slate-300 transition-colors leading-relaxed">
         {project.description}
       </p>
+
       <div className="flex flex-wrap gap-2 mt-auto">
         {project.technology
           ?.split(",")
@@ -52,7 +55,7 @@ const ProjectCard = ({ project, onOpenModal }: ProjectCardProps) => {
           .map((tech: string, idx: number) => (
             <span
               key={idx}
-              className="text-[10px] text-cloud-gray px-2 py-0.5 rounded border border-white/5 bg-white/[0.02]"
+              className="text-xs text-cloud-gray px-3 py-1 rounded border border-white/10 bg-white/[0.03]"
             >
               {tech.trim()}
             </span>
@@ -88,7 +91,7 @@ const ProjectModal = ({
   const [drive, setDrive] = useState("");
   const [isChecked, setIsChecked] = useState(false);
 
-  if (!isOpen || !project) return null;
+  // if (!isOpen || !project) return null;
 
   const handleApplyClick = () => {
     setShowProposal(true);
@@ -125,17 +128,20 @@ const ProjectModal = ({
               initial={{ scale: 0.95, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.95, opacity: 0 }}
-              className="w-full max-w-3xl glass-panel rounded-2xl shadow-2xl overflow-hidden pointer-events-auto flex flex-col max-h-[90vh]"
+              className="w-full max-w-4xl lg:max-w-5xl glass-panel rounded-2xl shadow-2xl overflow-hidden pointer-events-auto flex flex-col max-h-[90vh]"
             >
               {/* Modal Header */}
-              <div className="p-6 sm:p-8 border-b border-white/5 flex justify-between items-start bg-white/[0.02]">
+              <div
+                className="p-8 sm:p-10
+ border-b border-white/5 flex justify-between items-start bg-white/[0.02]"
+              >
                 <div className="space-y-4">
                   <div className="flex items-center gap-3">
                     <span className="text-[10px] font-medium uppercase tracking-wider px-2 py-1 rounded border border-ice-surge/20 bg-ice-surge/10 text-ice-surge">
                       {project.tag || "Open"}
                     </span>
                   </div>
-                  <h2 className="text-2xl sm:text-3xl font-semibold text-white tracking-tight">
+                  <h2 className="text-3xl sm:text-4xl font-semibold text-white tracking-tight">
                     {project.title}
                   </h2>
                 </div>
@@ -161,20 +167,23 @@ const ProjectModal = ({
 
               {/* Modal Body */}
               {!showProposal ? (
-                <div className="p-6 sm:p-8 overflow-y-auto no-scrollbar space-y-8">
+                <div
+                  className="p-8 sm:p-10
+ overflow-y-auto no-scrollbar space-y-8"
+                >
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                     <div className="md:col-span-2 space-y-6">
                       <div>
-                        <h3 className="text-sm font-medium text-white mb-3">
+                        <h3 className="text-lg font-semibold text-white mb-3">
                           About the Project
                         </h3>
-                        <p className="text-sm leading-relaxed text-cloud-gray">
+                        <p className="text-base leading-relaxed text-cloud-gray/90">
                           {project.description}
                         </p>
                       </div>
 
                       <div>
-                        <h3 className="text-sm font-medium text-white mb-3">
+                        <h3 className="text-lg font-semibold text-white mb-3">
                           Tech Stack
                         </h3>
                         <div className="flex flex-wrap gap-2">
@@ -194,7 +203,7 @@ const ProjectModal = ({
 
                     <div className="space-y-6">
                       <div>
-                        <h3 className="text-sm font-medium text-white mb-3">
+                        <h3 className="text-lg font-semibold text-white mb-3">
                           Mentors
                         </h3>
                         <div className="space-y-3">
@@ -253,7 +262,10 @@ const ProjectModal = ({
                   </div>
                 </div>
               ) : (
-                <div className="p-6 sm:p-8 space-y-6">
+                <div
+                  className="p-8 sm:p-10
+ space-y-6"
+                >
                   <div>
                     <h3 className="text-xl font-bold text-white mb-2">
                       Submit Proposal
@@ -410,8 +422,6 @@ const Projectsv2 = () => {
 
   return (
     <div className="bg-deep-night text-frost-white min-h-screen relative overflow-x-hidden">
-      
-      
       <div className="relative z-10 container mx-auto px-6 py-12">
         {woc_state ? (
           <>
@@ -449,7 +459,7 @@ const Projectsv2 = () => {
             </div>
 
             {projects.length > 0 ? (
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              <div className="grid grid-cols-1 gap-6">
                 {projects.map((p) => (
                   <ProjectCard
                     key={p.id}

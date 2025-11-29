@@ -21,7 +21,7 @@ import {
   MobileNavToggle,
   NavbarLogo,
   NavbarButton,
-} from "../components/ui/resizable-navbar";
+} from "../imported_components/ui/resizable-navbar";
 
 const BASE_URL = import.meta.env.VITE_REACT_APP_BASE_URL;
 
