@@ -139,7 +139,7 @@ const Home = () => {
         <div className="flex justify-center">
           <Link
             to="/how-it-works"
-            className="flex justify-center fontstylish py-2 hover:bg-slate-200 rounded-sm text-[16px] border-[#DCE5F5] border-[1px] m-2 w-[600px] text-[#DCE5F5]"
+            className="flex justify-center fontstylish py-2 text-[16px] border-[#DCE5F5] border-[1px] m-2 w-[600px] p-3 rounded-xl bg-[#1e3a5f] text-white border border-[#87bfff] hover:shadow-[0_0_12px_rgba(135,191,255,0.8)] hover:border-[#c3e6ff] transition"
           >
             SEE PROGRAM TIMELINE
           </Link>
@@ -148,7 +148,7 @@ const Home = () => {
         <div className="flex justify-center">
           <a
             href="/StudentManual.pdf"
-            className="flex justify-center fontstylish py-2 hover:bg-slate-200 rounded-sm border-[#DCE5F5] border-[1px] text-[16px] m-2 w-[600px] text-[#DCE5F5]"
+            className="flex justify-center fontstylish py-2 text-[16px] border-[#DCE5F5] border-[1px] m-2 w-[600px] p-3 rounded-xl bg-[#1e3a5f] text-white border border-[#87bfff] hover:shadow-[0_0_12px_rgba(135,191,255,0.8)] hover:border-[#c3e6ff] transition"
           >
             STUDENT MANUAL
           </a>
@@ -157,26 +157,26 @@ const Home = () => {
         <div className="flex justify-center">
           <a
             href="/MentorManual.pdf"
-            className="flex justify-center hover:bg-slate-200 fontstylish py-2 rounded-sm text-[16px] border-[#DCE5F5] border-[1px] m-2 w-[600px] text-[#DCE5F5]"
+            className="flex justify-center fontstylish py-2 text-[16px] border-[#DCE5F5] border-[1px] m-2 w-[600px] p-3 rounded-xl bg-[#1e3a5f] text-white border border-[#87bfff] hover:shadow-[0_0_12px_rgba(135,191,255,0.8)] hover:border-[#c3e6ff] transition"
           >
             MENTOR MANUAL
           </a>
         </div>
 
-        <div className="flex justify-center text-center mx-6 text-[35px] my-20 text-[#DCE5F5]">
+        <div className="flex justify-center text-center mx-6 text-[35px] my-10 text-[#DCE5F5]">
           Login with your Gmail account to register as a student
         </div>
 
         <div className="flex justify-center">
           <Link
             to="/login"
-            className="flex justify-center py-2 rounded-sm hover:bg-slate-200 text-[16px] border-[#DCE5F5] border-[1px] m-2 w-[600px] fontstylish text-[#DCE5F5]"
+            className="flex justify-center fontstylish py-2 text-[16px] border-[#DCE5F5] border-[1px] m-2 w-[600px] p-3 rounded-xl bg-[#1e3a5f] text-white border border-[#87bfff] hover:shadow-[0_0_12px_rgba(135,191,255,0.8)] hover:border-[#c3e6ff] transition mb-20"
           >
             REGISTER
           </Link>
         </div>
 
-        <div className="text-[45px] flex justify-center mt-20 mb-5 text-[#DCE5F5]">Contact Us</div>
+        {/* <div className="text-[45px] flex justify-center mt-20 mb-5 text-[#DCE5F5]">Contact Us</div>
 
         <div className="flex justify-center pb-10">
           <div>
@@ -199,9 +199,9 @@ const Home = () => {
               <a className="text-blue-500" href="mailto:devluplabs@iitj.ac.in">
                 devluplabs@iitj.ac.in
               </a>
-            </div>
-          </div>
-        </div>
+            </div> */}
+          {/* </div>
+        </div> */}
       </div>
     </div>
   );
