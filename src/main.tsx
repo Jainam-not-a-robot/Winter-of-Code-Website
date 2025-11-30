@@ -9,7 +9,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <GoogleOAuthProvider clientId={client_id}>
       <RecoilRoot>
-        <App />
+        <App/>
       </RecoilRoot>
     </GoogleOAuthProvider>
   </React.StrictMode>,
