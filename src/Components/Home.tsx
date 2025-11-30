@@ -1,7 +1,5 @@
-import { FaGithub } from "react-icons/fa";
-import { IoMail } from "react-icons/io5";
+
 import { IoMdFlash } from "react-icons/io";
-import { BiLogoDiscord } from "react-icons/bi";
 import { MdSupervisorAccount, MdBuild } from "react-icons/md";
 import { useRecoilValue } from "recoil";
 import { togglestate } from "../store/toggle";
@@ -32,7 +30,7 @@ const Home = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
-          className="shadow flex flex-col items-center relative z-10"
+          className="flex flex-col items-center relative z-10"
         >
           <div className="flex flex-col sm:flex-row items-center gap-0">
             <img
@@ -75,7 +73,7 @@ const Home = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
-          className="shadow flex flex-col items-center"
+          className=" flex flex-col items-center"
         >
           <div className="text-center mx-6 text-[32px] font-semibold text-[#DCE5F5] mt-5">
             How does WOC help you?
@@ -118,7 +116,7 @@ const Home = () => {
       </div>
 
       <div className="relative z-20">
-        <div
+        {/* <div
           className="h-[320px] w-screen flex flex-col justify-center items-center relative overflow-hidden"
           style={{
             backgroundImage: "url(https://i.imgur.com/WwDfTfH.png)",
@@ -132,14 +130,29 @@ const Home = () => {
           </div>
           <div className="text-[15px] text-center m-2 italic text-white relative z-10">Now build something!</div>
           <div className="absolute top-0 left-0 w-full h-full filter blur-sm z-0" />
-        </div>
+        </div> */}
 
         <div className="flex justify-center text-center text-[35px] my-20 text-[#DCE5F5]">Interested to know more?</div>
 
         <div className="flex justify-center">
           <Link
             to="/how-it-works"
-            className="flex justify-center fontstylish py-2 text-[16px] border-[#DCE5F5] border-[1px] m-2 w-[600px] p-3 rounded-xl bg-[#1e3a5f] text-white border border-[#87bfff] hover:shadow-[0_0_12px_rgba(135,191,255,0.8)] hover:border-[#c3e6ff] transition"
+            className="
+              flex justify-center fontstylish py-2 text-[16px]
+              m-2 w-[600px] p-3 rounded-xl
+              bg-[#1e3a5f] text-white 
+              border border-[#87bfff] 
+              hover:shadow-[0_0_12px_rgba(135,191,255,0.8)]
+              hover:border-[#c3e6ff]
+              transition
+              bg-cover bg-center
+            hover:bg-[url('./assets/snowflake.png')]
+            hover:bg-repeat-x
+            hover:bg-[50%_10%]
+            hover:bg-contain
+
+            "
+
           >
             SEE PROGRAM TIMELINE
           </Link>
@@ -148,16 +161,32 @@ const Home = () => {
         <div className="flex justify-center">
           <a
             href="/StudentManual.pdf"
-            className="flex justify-center fontstylish py-2 text-[16px] border-[#DCE5F5] border-[1px] m-2 w-[600px] p-3 rounded-xl bg-[#1e3a5f] text-white border border-[#87bfff] hover:shadow-[0_0_12px_rgba(135,191,255,0.8)] hover:border-[#c3e6ff] transition"
+            className="
+              flex justify-center fontstylish py-2 text-[16px]
+              m-2 w-[600px] p-3 rounded-xl
+              bg-[#1e3a5f] text-white 
+              border border-[#87bfff] 
+              hover:shadow-[0_0_12px_rgba(135,191,255,0.8)]
+              hover:border-[#c3e6ff]
+              transition
+hover:bg-[url('./assets/snowflake.png')]
+hover:bg-repeat-x
+hover:bg-[70%_30%]
+hover:bg-contain
+            "
+
           >
             STUDENT MANUAL
           </a>
         </div>
 
-        <div className="flex justify-center">
+        <div className="flex justify-center ">
           <a
             href="/MentorManual.pdf"
-            className="flex justify-center fontstylish py-2 text-[16px] border-[#DCE5F5] border-[1px] m-2 w-[600px] p-3 rounded-xl bg-[#1e3a5f] text-white border border-[#87bfff] hover:shadow-[0_0_12px_rgba(135,191,255,0.8)] hover:border-[#c3e6ff] transition"
+            className="flex justify-center fontstylish py-2 text-[16px]  m-2 w-[600px] p-3 rounded-xl bg-[#1e3a5f] text-white border border-[#87bfff] hover:shadow-[0_0_12px_rgba(135,191,255,0.8)] hover:border-[#c3e6ff] transition hover:bg-[url('./assets/snowflake.png')]
+              hover:bg-repeat-x
+              hover:bg-[20%_30%]
+              hover:bg-contain"
           >
             MENTOR MANUAL
           </a>
@@ -170,7 +199,10 @@ const Home = () => {
         <div className="flex justify-center">
           <Link
             to="/login"
-            className="flex justify-center fontstylish py-2 text-[16px] border-[#DCE5F5] border-[1px] m-2 w-[600px] p-3 rounded-xl bg-[#1e3a5f] text-white border border-[#87bfff] hover:shadow-[0_0_12px_rgba(135,191,255,0.8)] hover:border-[#c3e6ff] transition mb-20"
+            className="flex justify-center fontstylish py-2 text-[16px]  m-2 w-[600px] p-3 rounded-xl bg-[#1e3a5f] text-white border border-[#87bfff] hover:shadow-[0_0_12px_rgba(135,191,255,0.8)] hover:border-[#c3e6ff] transition mb-20 hover:bg-[url('./assets/snowflake.png')]
+              hover:bg-repeat-x
+              hover:bg-[20%_10%]
+              hover:bg-contain"
           >
             REGISTER
           </Link>
@@ -200,7 +232,7 @@ const Home = () => {
                 devluplabs@iitj.ac.in
               </a>
             </div> */}
-          {/* </div>
+        {/* </div>
         </div> */}
       </div>
     </div>
