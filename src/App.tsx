@@ -12,22 +12,36 @@ import Myprojects from "./Components/Myprojects.tsx";
 import Proposal from "./Components/Proposals.tsx";
 import AdminPortal from "./Components/Adminportal.tsx";
 import ProjectForm from "./Components/Projectform.tsx";
-import { useRecoilValueLoadable } from "recoil";
-import { userstate } from "./store/userState.ts";
+import { useRecoilValue, useRecoilValueLoadable, useSetRecoilState } from "recoil";
+import { refreshUserState, userstate } from "./store/userState.ts";
 import Loading from "./Components/NewLoading.tsx";
-import { Suspense } from "react";
+import { Suspense, useEffect } from "react";
 import Navbar from "./Components/NewNavbar.tsx";
 import NewNotFound from "./Components/NewNotFound.tsx";
 import Profileview from "./Components/Profileview.tsx";
 import Projectsv2 from "./pages/Projectsv2.tsx";
 import HelpContactv2 from "./pages/HelpContactv2.tsx"
+import PastProgramv2 from "./pages/pastprogramv2.tsx"
 
 const App = () => {
-  const user = useRecoilValueLoadable(userstate);
+  // const user = useRecoilValueLoadable(userstate);
 
-  if (user.state === "loading") {
-    return <Loading />;
-  }
+  // if (user.state === "loading") {
+  //   return <Loading />;
+  // }
+  const user = useRecoilValue(userstate);
+  const setUser = useSetRecoilState(userstate);
+  const refresh = useRecoilValueLoadable(refreshUserState);
+
+  useEffect(() => {
+    if (refresh.state === "hasValue") {
+      setUser(refresh.contents);
+    }
+  }, [refresh.state]);
+
+  // if (user === null) {
+  //   return <Loading />; // only when no cached user
+  // }
 
   return (
     <div>
@@ -39,7 +53,8 @@ const App = () => {
               <Route path="/proposals" element={<Proposal />} />
               <Route path="/myprojects" element={<Myprojects />} />
               <Route path="/login" element={<Login />} />
-              <Route path="/pastprogram" element={<Programs />} />
+              <Route path="/pastprogram" element={<PastProgramv2/>} />
+              {/* <Route path="/pastprogram" element={<Programs/>} /> */}
               <Route path="/" element={<Home />} />
               <Route path="/mentors" element={<Mentors />} />
               <Route path="/projects" element={<Projectsv2 />} />
