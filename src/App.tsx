@@ -6,7 +6,6 @@ import Timeline from "./Components/Timeline";
 import Projects from "./Components/Projects";
 import Profile from "./Components/Profile";
 import Programs from "./Components/Programs";
-import Login from "./Components/Login";
 import Idea from "./Components/Idea.tsx";
 import Myprojects from "./Components/Myprojects.tsx";
 import Proposal from "./Components/Proposals.tsx";
@@ -58,7 +57,6 @@ const App = () => {
             <Routes>
               <Route path="/proposals" element={<Proposal />} />
               <Route path="/myprojects" element={<Myprojects />} />
-              <Route path="/login" element={<Login />} />
 
               {/* NEW updated past programs */}
               <Route path="/pastprogram" element={<PastProgramv2 />} />
