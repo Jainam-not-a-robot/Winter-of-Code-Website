@@ -7,7 +7,7 @@ export const mentorstate = atom<Mentor[] | null>({
   default: selector({
     key:"getmentors",
     get: async()=>{
-        const resp = await axios.get(`${BASE_URL}/allmentors`);
+        const resp = await axios.get(`${BASE_URL}/project/summary`);
         return resp.data
     }
   }),
