@@ -5,6 +5,7 @@ import { useRecoilValue } from "recoil";
 import { togglestate } from "../store/toggle";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
+import { useGoogleAuth } from "@/hooks/googleLogin";
 import "../index.css";
 import devlupLogo from "../assets/devlup-logo-nobg.png";
 import Typewriter from "typewriter-effect";
@@ -12,7 +13,7 @@ import FallingCircles from "./FallingCircles";
 
 const Home = () => {
   const toggle = useRecoilValue(togglestate);
-
+  const googleLogin=useGoogleAuth()
   return (
     <div className={`overflow-x-hidden ${toggle === null ? "" : toggle ? "contract" : "expand"}`}>
       <div
@@ -197,15 +198,15 @@ hover:bg-contain
         </div>
 
         <div className="flex justify-center">
-          <Link
-            to="/login"
-            className="flex justify-center fontstylish py-2 text-[16px]  m-2 w-[600px] p-3 rounded-xl bg-[#1e3a5f] text-white border border-[#87bfff] hover:shadow-[0_0_12px_rgba(135,191,255,0.8)] hover:border-[#c3e6ff] transition mb-20 hover:bg-[url('./assets/snowflake.png')]
+          <div
+            onClick={()=>googleLogin()}
+            className="flex justify-center fontstylish py-2 text-[16px] cursor-pointer  m-2 w-[600px] p-3 rounded-xl bg-[#1e3a5f] text-white border border-[#87bfff] hover:shadow-[0_0_12px_rgba(135,191,255,0.8)] hover:border-[#c3e6ff] transition mb-20 hover:bg-[url('./assets/snowflake.png')]
               hover:bg-repeat-x
               hover:bg-[20%_10%]
               hover:bg-contain"
           >
             REGISTER
-          </Link>
+          </div>
         </div>
 
         {/* <div className="text-[45px] flex justify-center mt-20 mb-5 text-[#DCE5F5]">Contact Us</div>

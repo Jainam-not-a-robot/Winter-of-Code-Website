@@ -1,12 +1,13 @@
 
 import React, { useState, ReactNode } from "react";
-import { useRecoilValue, useSetRecoilState } from "recoil";
+import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 import { useNavigate } from "react-router-dom";
 import { Avatar, Button, Menu, MenuItem, Snackbar, IconButton } from "@mui/material";
 import { RxHamburgerMenu } from "react-icons/rx";
 import CloseIcon from "@mui/icons-material/Close";
 import axios from "axios";
 import { userstate } from "../store/userState";
+import {useGoogleAuth} from "../hooks/googleLogin";
 import { togglestate } from "../store/toggle";
 import Sidebar from "./SideBar";
 import { mentorrequest } from "../types/mentor";
@@ -44,11 +45,11 @@ const NewNavbar: React.FC = () => {
   const [mentors, setMentors] = useState<mentorrequest[]>([]);
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const [successMessage, setSuccessMessage] = useState("");
-  const user = useRecoilValue(userstate);
+  const [user] = useRecoilState(userstate);
   const setToggle = useSetRecoilState<boolean | null>(togglestate);
   const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
-
+  const googleLogin = useGoogleAuth();
   const fetchMentorRequests = async () => {
     const token = localStorage.getItem("jwt_token");
     try {
@@ -125,6 +126,7 @@ const NewNavbar: React.FC = () => {
     { name: "Ideas", link: "/ideas" },
     { name: "Help", link: "/help" },
   ];
+  
 
   return (
     <div>
@@ -133,7 +135,7 @@ const NewNavbar: React.FC = () => {
           {/* <NavbarLogo /> */}
           <NavItems items={navItems} />
           {!localStorage.getItem("access_token") ? (
-            <NavbarButton onClick={() => navigate("/login")}>
+            <NavbarButton onClick={() => googleLogin()}>
               LOG IN
             </NavbarButton>
           ) : (
@@ -178,7 +180,6 @@ const NewNavbar: React.FC = () => {
                     localStorage.removeItem("access_token"); 
                     localStorage.removeItem("refresh_token");
                     localStorage.removeItem("jwt_token");
-                    navigate("/login"); 
                   }}>Logout
                   </MenuItem>
                 </Menu>
