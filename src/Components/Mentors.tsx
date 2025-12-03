@@ -30,8 +30,8 @@ const Mentors = () => {
               Meet Our Experts
             </div>
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight mb-6">
-              <span className="text-frost-white">Our </span>
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-ice-surge to-frost-ember">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-frost-ember to-frost-white animate-gradient">Our </span>
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-frost-white to-frost-ember animate-gradient">
                 Mentors
               </span>
             </h1>
@@ -55,7 +55,7 @@ const Mentors = () => {
                     >
                       {/* Project Name Header */}
                       <div className="text-center mb-8">
-                        <h2 className="text-2xl sm:text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-frost-white via-ice-surge to-frost-ember">
+                        <h2 className="text-2xl sm:text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-frost-white via-ice-surge to-frost-ember animate-gradient">
                           {x.proj_name}
                         </h2>
                         <div className="w-24 h-1 bg-gradient-to-r from-ice-surge to-frost-ember mx-auto mt-3 rounded-full"></div>

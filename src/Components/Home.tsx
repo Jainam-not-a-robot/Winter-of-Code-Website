@@ -39,7 +39,7 @@ const Home = () => {
     <div className={`overflow-x-hidden bg-deep-night min-h-screen ${toggle === null ? "" : toggle ? "contract" : "expand"}`}>
       {/* Hero Section */}
       <div
-        className="flex flex-col justify-center items-center relative overflow-hidden min-h-[500px] sm:min-h-[590px] bg-cover"
+        className="flex flex-col justify-center items-center relative overflow-hidden h-screen bg-cover"
         style={{
           background: "linear-gradient(180deg, #0A0D12 0%, #111722 100%)",
         }}
@@ -60,7 +60,7 @@ const Home = () => {
             />
 
             <div className="text-center sm:text-left">
-              <h1 className="font-sans2 text-4xl sm:text-5xl md:text-6xl lg:text-[66px] relative z-10 font-bold bg-gradient-to-r from-ice-surge to-frost-ember text-transparent bg-clip-text animate-gradient mb-4 sm:mb-8">
+              <h1 className="font-sans2 text-4xl sm:text-5xl md:text-6xl lg:text-[66px] relative z-10 font-bold bg-gradient-to-r from-ice-surge to-frost-ember text-transparent bg-clip-text animate-gradient mb-4 sm:mb-8 animate-gradient pt-4">
                 Winter Of Code
               </h1>
 
@@ -130,8 +130,9 @@ const Home = () => {
       </div>
 
       {/* CTA Section */}
-      <div className="relative z-20 bg-deep-night py-12 sm:py-20">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6">
+      <div className="relative z-10 bg-deep-night py-12 sm:py-20 overflow-hidden">
+        <FallingCircles />
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 relative z-10">
           <h2 className="text-center text-2xl sm:text-3xl md:text-4xl mb-10 sm:mb-16 text-frost-white font-semibold">
             Interested to know more?
           </h2>
@@ -139,23 +140,26 @@ const Home = () => {
           <div className="flex flex-col gap-4">
             <Link
               to="/how-it-works"
-              className="glass-card flex justify-center items-center py-3 sm:py-4 px-6 text-sm sm:text-base font-medium rounded-xl text-frost-white hover:border-ice-surge/50 hover:shadow-[0_0_20px_rgba(0,198,255,0.3)] transition-all duration-300"
+              className="glass-card flex justify-center items-center py-3 sm:py-4 px-6 text-sm sm:text-base font-medium rounded-xl text-frost-white hover:border-ice-surge/50 hover:shadow-[0_0_20px_rgba(0,198,255,0.3)] transition-all duration-300 relative overflow-hidden group"
             >
-              SEE PROGRAM TIMELINE
+              <span className="absolute inset-0 bg-[url('/snowflake.png')] bg-no-repeat opacity-0 group-hover:opacity-20 transition-opacity duration-300" style={{ backgroundPosition: `${Math.random() * 100}% ${Math.random() * 100}%`, backgroundSize: '150%' }}></span>
+              <span className="relative z-10">SEE PROGRAM TIMELINE</span>
             </Link>
 
             <a
               href="/StudentManual.pdf"
-              className="glass-card flex justify-center items-center py-3 sm:py-4 px-6 text-sm sm:text-base font-medium rounded-xl text-frost-white hover:border-ice-surge/50 hover:shadow-[0_0_20px_rgba(0,198,255,0.3)] transition-all duration-300"
+              className="glass-card flex justify-center items-center py-3 sm:py-4 px-6 text-sm sm:text-base font-medium rounded-xl text-frost-white hover:border-ice-surge/50 hover:shadow-[0_0_20px_rgba(0,198,255,0.3)] transition-all duration-300 relative overflow-hidden group"
             >
-              STUDENT MANUAL
+              <span className="absolute inset-0 bg-[url('/snowflake.png')] bg-no-repeat opacity-0 group-hover:opacity-20 transition-opacity duration-300" style={{ backgroundPosition: `${Math.random() * 100}% ${Math.random() * 100}%`, backgroundSize: '150%' }}></span>
+              <span className="relative z-10">STUDENT MANUAL</span>
             </a>
 
             <a
               href="/MentorManual.pdf"
-              className="glass-card flex justify-center items-center py-3 sm:py-4 px-6 text-sm sm:text-base font-medium rounded-xl text-frost-white hover:border-ice-surge/50 hover:shadow-[0_0_20px_rgba(0,198,255,0.3)] transition-all duration-300"
+              className="glass-card flex justify-center items-center py-3 sm:py-4 px-6 text-sm sm:text-base font-medium rounded-xl text-frost-white hover:border-ice-surge/50 hover:shadow-[0_0_20px_rgba(0,198,255,0.3)] transition-all duration-300 relative overflow-hidden group"
             >
-              MENTOR MANUAL
+              <span className="absolute inset-0 bg-[url('/snowflake.png')] bg-no-repeat opacity-0 group-hover:opacity-20 transition-opacity duration-300" style={{ backgroundPosition: `${Math.random() * 100}% ${Math.random() * 100}%`, backgroundSize: '150%' }}></span>
+              <span className="relative z-10">MENTOR MANUAL</span>
             </a>
           </div>
 
@@ -166,16 +170,17 @@ const Home = () => {
           <div className="flex justify-center">
             <button
               onClick={() => googleLogin()}
-              className="w-full max-w-md py-3 sm:py-4 px-8 rounded-xl font-semibold text-deep-night bg-gradient-to-r from-ice-surge to-frost-ember hover:shadow-[0_0_30px_rgba(0,198,255,0.4)] transition-all duration-300 text-sm sm:text-base"
+              className="w-full max-w-md py-3 sm:py-4 px-8 rounded-xl font-semibold text-deep-night bg-gradient-to-r from-ice-surge to-frost-ember hover:shadow-[0_0_30px_rgba(0,198,255,0.4)] transition-all duration-300 text-sm sm:text-base relative overflow-hidden group"
             >
-              REGISTER
+              <span className="absolute inset-0 bg-[url('/snowflake.png')] bg-no-repeat opacity-0 group-hover:opacity-30 transition-opacity duration-300" style={{ backgroundPosition: `${Math.random() * 100}% ${Math.random() * 100}%`, backgroundSize: '150%' }}></span>
+              <span className="relative z-10">REGISTER</span>
             </button>
           </div>
         </div>
       </div>
 
       {/* Footer */}
-      <footer className="bg-deep-night border-t border-white/5 py-8">
+      <footer className="bg-deep-night border-t border-white/5 py-8 relative z-20">
         <p className="text-center text-xs sm:text-sm text-cloud-gray/60">
           © 2025 Winter of Code. Crafted with frost & code.
         </p>
