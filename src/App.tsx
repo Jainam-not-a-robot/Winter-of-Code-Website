@@ -12,7 +12,11 @@ import Proposal from "./Components/Proposals.tsx";
 import AdminPortal from "./Components/Adminportal.tsx";
 import ProjectForm from "./Components/Projectform.tsx";
 
-import { useRecoilValue, useRecoilValueLoadable, useSetRecoilState } from "recoil";
+import {
+  useRecoilValue,
+  useRecoilValueLoadable,
+  useSetRecoilState,
+} from "recoil";
 import { refreshUserState, userstate } from "./store/userState.ts";
 
 import Loading from "./Components/NewLoading.tsx";
@@ -24,7 +28,6 @@ import Projectsv2 from "./pages/Projectsv2.tsx";
 
 import HelpContactv2 from "./pages/HelpContactv2.tsx";
 import PastProgramv2 from "./pages/pastprogramv2.tsx";
-
 
 const App = () => {
   // NEW: synchronous user load (from PR)
@@ -68,7 +71,6 @@ const App = () => {
               {/* Correct help route */}
               <Route path="/help" element={<HelpContactv2 />} />
 
-              <Route path="/ideas" element={<Idea />} />
               <Route path="/how-it-works" element={<Timeline />} />
               <Route path="/profile" element={<Profile />} />
               <Route path="/admin" element={<AdminPortal />} />

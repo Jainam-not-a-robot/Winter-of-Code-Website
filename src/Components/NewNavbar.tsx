@@ -129,13 +129,13 @@ const NewNavbar: React.FC = () => {
     { name: "Projects", link: "/projects" },
     { name: "How it works", link: "/how-it-works" },
     { name: "Past Programs", link: "/pastprogram" },
-    { name: "Ideas", link: "/ideas" },
+    // { name: "Ideas", link: "/ideas" },
     { name: "Help", link: "/help" },
   ];
 
   return (
     <div>
-      <ResizableNavbar className="fixed top-0">
+      <ResizableNavbar className="fixed top-2">
         {/* Desktop Navigation */}
         <NavBody className="bg-arctic-steel/80 backdrop-blur-md border-b border-white/5">
           <NavItems items={navItems} />
